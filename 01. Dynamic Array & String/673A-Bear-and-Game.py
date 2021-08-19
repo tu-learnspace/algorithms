@@ -1,5 +1,6 @@
-'''
+"""
 https://codeforces.com/problemset/problem/673/A
+
 - Một trận đấu dài 90 phút.
 - Nếu 15 phút liên tiếp boring thì tắt TV -> phút 16
 - Biết đc phút thứ N interesting -> tính số thời gian xem TV.
@@ -10,7 +11,7 @@ https://codeforces.com/problemset/problem/673/A
 
 IDEA:
 - 2 khoảng interesting lớn >= 15 -> boring enough to off
-'''
+"""
 
 if __name__ == '__main__':
     n = int(input())

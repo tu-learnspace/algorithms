@@ -1,8 +1,10 @@
 """
-Cho 1 vòng tròn chữ cái, kiểu như quay số điện thoại ngày xưa (ngoại trừ nó ko tự quay lại vị trí ban đầu)
-Input là 1 string
-Output là số nhỏ nhất tổng các vòng xoay để in ra string đó
-Có 26 chữ cái, bắt đầu tại 'a'.
+https://codeforces.com/problemset/problem/731/A
+
+- Cho 1 vòng tròn chữ cái, kiểu như quay số điện thoại ngày xưa (ngoại trừ nó ko tự quay lại vị trí ban đầu)
+- Input là 1 string
+- Output là số nhỏ nhất tổng các vòng xoay để in ra string đó
+- Có 26 chữ cái, bắt đầu tại 'a'.
 
 IDEA:
  - init tại pos = 'a'
