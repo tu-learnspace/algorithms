@@ -29,14 +29,10 @@ IDEA:
 # má tức quá t lặp 2 vòng for chi rồi để time limit exceeded
 
 if __name__ == '__main__':
-    n = list(map(int, input().split()))
-    l = list(map(int, input().split()))
+    na,nb = map(int, input().split())
+    k,m = map(int, input().split())
     a = list(map(int, input().split()))
     b = list(map(int, input().split()))
-    na = n[0]
-    nb = n[1]
-    k = l[0]
-    m = l[1]
 
     if a[k - 1] < b[nb - m]:
         print('YES')
