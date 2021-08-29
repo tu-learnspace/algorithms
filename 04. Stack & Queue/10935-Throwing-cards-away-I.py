@@ -1,6 +1,20 @@
 """
 https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&problem=1876
 
+- Có xấp bài
+- Lá trên cùng sẽ đc rút ra rồi giục vô thùng rác
+- Lá trên cùng mới sau thao tác này (tức là lá tiếp theo lúc chưa giục) sẽ được chuyển xuống dưới đáy.
+- Tìm ra thứ tự các lá bài sẽ được rút ra, cũng như lá cuối cùng còn sót lại.
+
+- Input:
+    + nhiều dòng, mỗi dòng là 1 test case. kết thúc là 0
+- Output:
+    + Discarded cards và Remaining card của từng test case
+
+IDEA:
+- Xài 1 cái queue bình thường
+- khi giục rác thì là pop top ra rồi in.
+- lá tiếp theo xuống cuối -> pop top ra rồi put vô cuối queue
 """
 from queue import Queue
 
