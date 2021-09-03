@@ -13,48 +13,26 @@ https://codeforces.com/problemset/problem/644/B
     + in ra thời điểm hoàn thành xử lý truy vấn đó, bị từ chối thì -1
 
 IDEA:
-
+- Khởi tạo hàng đợi, đẩy truy vấn vào hàng đợi. Ta chỉ lưu thời gian cần để xử lý xong truy vấn.
+- Khi mà hàng đợi còn chỗ, ta push thời gian xử lý xong truy vấn đó vào. Nếu hết chỗ thì từ chối (print -1)
+- t là thời điểm mà ta đang xét:
+    + ta chỉ pop truy vấn cũ ra khi truy vấn mới có thời gian bắt đầu lớn hơn thời gian làm xong truy vấn cũ
 """
 from queue import Queue
-class Query:
-    def __init__(self, t, d, id):
-        self.t = t
-        self.d = d
-        self.id = id
 
 n, b = map(int, input().split())
-
 q = Queue()
-complete_time = 0
-ans = [0]*n
+process_time = 0
 
 for i in range(n):
     t, d = map(int, input().split())
-    query = Query(t, d, i)
 
-    if complete_time < t:
-        while q.qsize():
-            job = q.get()
-            complete_time = max(complete_time,job.t) + job.d
-            ans[job.id] = complete_time
-            if complete_time > t:
-                break
-
-    if complete_time > t:
-        if q.qsize() < b:  # queue still enough
-            q.put(query)
-        else:  # queue is full
-            ans[i] = -1
-            break
-    else:
-        complete_time = max(complete_time, t) + d
-        ans[i] = complete_time
-
-while q.qsize():
-    job = q.get()
-    complete_time = max(complete_time,job.t) + job.d
-    ans[job.id] = complete_time
-
-
-for i in range(len(ans)):
-    print(ans[i], end=' ')
+    while q.qsize() != 0 and t >= q.queue[0]:   # lấy các truy vấn cũ ra sao cho
+        q.get()                                 # thời điểm hiện tại đang xét > thời gian xử lý xong truy vấn cũ
+        
+    if q.qsize() <= b:      # hàng đợi còn chỗ
+        process_time = max(t, process_time) + d
+        q.put(process_time)
+        print(process_time, end=' ')
+    else:                   # hết chỗ nên từ chối
+        print(-1, end=' ')

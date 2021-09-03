@@ -2,8 +2,6 @@
 https://codeforces.com/problemset/problem/451/B
 
 - liệu có đoạn l,r nào thuộc mảng a mà đảo nó lại thì mảng a đc sắp xếp tăng dần
-- mảng có đoạn [l,r] là liên tiếp [l, l+1, ..., r]
-- đảo lại: mảng thành [1,2, ..., l-2, l-1, r, r-1, ..., l+1, l, r+1, r+2, ..., n-1, n]
 
 - Input:
     + dòng 1: n là kích thước mảng a
@@ -12,18 +10,41 @@ https://codeforces.com/problemset/problem/451/B
     + yes hoặc no. nếu yes thì in ra 2 số nguyên l, r
 
 IDEA:
-tìm đoạn giảm, nếu ptử đầu tiền của đoạn giảm > ptử kề sau ptử cuối đoạn giảm hoặc ngc lại -> false
+- Sort mảng a rồi so sánh với mảng ban đầu => tìm đc vị trí khác biệt
+- Tuy nhiên, chưa chắc mảng con đảo ngược sẽ tăng dần
+=> thử đảo ngược mảng con vừa sắp xếp tăng dần, nếu nó trùng khớp với mảng con ban đầu => yes
+- Đảo ngược mảng con: chỉ cần swap 2 ptử rìa, thu gọn vào chính giữa
 """
 
 n = int(input())
-a = list(map(int,input().split()))
+a = list(map(int, input().split()))
+l = r = 0
+a_sorted = sorted(a)
 
-check = False
-end = start = 0
+# tìm vị trí đầu tiên left khác biệt
+for i in range(n):
+    if a[i] != a_sorted[i]:
+        l = i
+        break
+# tìm vị trí đầu tiên right khác biệt
+for i in range(n-1,-1,-1):
+    if a[i] != a_sorted[i]:
+        r = i
+        break
 
-for i in range(len(a)-1):
-    start = i
-    while a[i] < a[i+1]:
-        end += 1
-        i += 1
+# swap và so sánh
+i, j = l, r
+while i <= j:
+    temp = a[i]
+    a[i] = a[j]
+    a[j] = temp
+    i += 1
+    j -= 1
+
+if a_sorted == a:
+    print('yes')
+    print(l + 1, end=' ')
+    print(r + 1, end='')
+else:
+    print('no')
 
