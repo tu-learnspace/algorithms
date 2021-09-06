@@ -16,7 +16,7 @@ IDEA:
 - Khởi tạo hàng đợi, đẩy truy vấn vào hàng đợi. Ta chỉ lưu thời gian cần để xử lý xong truy vấn.
 - Khi mà hàng đợi còn chỗ, ta push thời gian xử lý xong truy vấn đó vào. Nếu hết chỗ thì từ chối (print -1)
 - t là thời điểm mà ta đang xét:
-    + ta chỉ pop truy vấn cũ ra khi truy vấn mới có thời gian bắt đầu lớn hơn thời gian làm xong truy vấn cũ
+    + thời điểm đó lớn hơn thời gian làm xong truy vấn first in có trong queue => pop nó ra
 """
 from queue import Queue
 
@@ -27,12 +27,12 @@ process_time = 0
 for i in range(n):
     t, d = map(int, input().split())
 
-    while q.qsize() != 0 and t >= q.queue[0]:   # lấy các truy vấn cũ ra sao cho
-        q.get()                                 # thời điểm hiện tại đang xét > thời gian xử lý xong truy vấn cũ
-        
-    if q.qsize() <= b:      # hàng đợi còn chỗ
+    while q.qsize() != 0 and t >= q.queue[0]:
+        q.get()   # thời điểm hiện tại đang xét > thời gian xử lý xong truy vấn first in => nó đã làm xong, pop nó ra
+
+    if q.qsize() <= b:  # hàng đợi còn chỗ (push vào tối đa b + 1 job), vì giả sử cái job đang trong queue đang đc làm => thật ra queue vẫn còn trống 1 chỗ)
         process_time = max(t, process_time) + d
         q.put(process_time)
         print(process_time, end=' ')
-    else:                   # hết chỗ nên từ chối
+    else:               # hết chỗ nên từ chối
         print(-1, end=' ')

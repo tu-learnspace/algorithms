@@ -1,47 +1,40 @@
-"""
-Source code BFS
-"""
-# basic
 from queue import Queue
+
 MAX = 100
 V = None
 E = None
-visited = [False for i in range(MAX)]   # Mảng lưu vết là đỉnh nào đã visit thì true, ko thì false
-                                        # => để khỏi xét lại nữa khi modify mảng path
-path = [0 for i in range(MAX)]          # Mảng lưu lại path của đỉnh i (path là đỉnh kề trc i trong đường đi)
-                                        # => khi truy vết lại thì xài
-graph = [[] for i in range(MAX)]        # Mảng lưu lại các mảng là đỉnh kề với đỉnh i
-                                        # => từ đây mới biết phải xét đỉnh nào khi modify path
+visited = [False for _ in range(MAX)]   # mảng lưu vết: đỉnh nào đã visited thì true, ko thì false => để khỏi xét lại
+path = [0 for _ in range(MAX)]  # mảng lưu path (path là đỉnh kề trước) => khi truy vết thì xài
+graph = [[] for _ in range(MAX)]  # mảng lưu lại các mảng con là đỉnh kề với đỉnh i (đồ thì đề bài) => để biết mà xét đinh nào (push nào vô queue)
 
-# Thuật toán chính, s là đỉnh gốc
+# thuật toán để lưu trữ đồ thị & đường đi, s là đỉnh gốc
 def BFS(s):
-    for i in range(V):              # Khởi tạo
+    for i in range(V):          # khởi tạo
         visited[i] = False
         path[i] = -1
-    q = Queue()                     # Queue để push vào những đỉnh cần xét
-    # Bắt đầu từ đỉnh gốc
+    q = Queue()                 # queue để push vào những đỉnh cần xét (kề vs đỉnh hiện tại và not visited)
+    # bắt đầu từ đỉnh gốc
     visited[s] = True
     q.put(s)
-    # Loang ra
+
+    # loang đường đi
     while not q.empty():
-        u = q.get()                 # lấy đỉnh u ra khỏi queue để xét
-        for v in graph[u]:          # xét các đỉnh kề với đỉnh u
-            if not visited[u]:
+        u = q.get()                 # lấy đỉnh U ra khỏi queue để xét
+        for v in graph[u]:          # xét các đỉnh V kề đỉnh U
+            if not visited[v]:
                 visited[v] = True   # đánh dấu đã thăm
-                q.put(v)            # thêm vào queue (để lát vòng while sau xét - loang ra)
-                path[v] = u         # đánh dấu đỉnh trc v là u
+                q.put(v)            # thêm vào queue các đỉnh kề khác (vòng while sau xét)
+                path[v] = u         # đánh dấu đỉnh trước V là U
 
-
-
-# In đường đi từ s -> f (dùng đề quy)
-def printPath(s, f):
+# tìm đường đi từ s->f dùng đề quy
+def printPathRecursion(s, f):
     if s == f:
         print(f, end=' ')
     else:
         if path[f] == -1:
             print('No path')
         else:
-            printPath(s, path[f])    # từ trước f -> s
+            printPathRecursion(s, path[f])
             print(f, end=' ')
 
 
@@ -49,10 +42,45 @@ if __name__ == '__main__':
     V, E = map(int, input().split())
     for i in range(E):
         u, v = map(int, input().split())
-        graph[u].append(v)            # đồ thị không hướng
+        graph[u].append(v)                  # đồ thị không hướng
         graph[v].append(u)
 
     s = 0
-    f = 1
+    f = 5
     BFS(s)
-    printPath(s, f)
+    printPathRecursion(s, f)
+
+
+# vd
+# input :
+# 6 8
+# 0 1
+# 0 3
+# 1 2
+# 1 3
+# 1 5
+# 2 5
+# 3 4
+# 3 5
+# output: 0 1 5
+
+
+# tìm đường đi từ s -> f ko dùng đề quy
+# def printPath(s, f):
+#     b = []  # mảng kết quả
+#     if f == s:
+#         print(s)
+#         return
+#     if path[f] == -1:
+#         print('No path')
+#         return
+#     # truy ngược lại
+#     while True:
+#         b.append(f) # bắt đầu từ đỉnh f
+#         f = path[f] # tiếp theo sẽ là đỉnh trước đỉnh f
+#         if f == s:  # đến cuối rồi
+#             b.append(s)
+#             break
+#     # in ngược lại do đang đi ngược từ f -> s
+#     for i in range(len(b)-1,-1,-1):
+#         print(b[i],end=' ')
