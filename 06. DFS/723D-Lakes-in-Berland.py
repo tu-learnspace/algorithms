@@ -86,10 +86,13 @@ if __name__ == '__main__':
                     lakes.append(Lake(i, j, size))
 
     lakes.sort(key=lambda s: s.size)
-    total_fill = len(lakes) - k
-    print(total_fill)
-    for i in range(total_fill):
+    lake_fill = len(lakes) - k
+    cell_fill = 0
+
+    for i in range(lake_fill):
+        cell_fill += lakes[i].size
         dfs_fill([lakes[i].x, lakes[i].y])
+    print(cell_fill)
 
     # print land
     for i in range(n):
