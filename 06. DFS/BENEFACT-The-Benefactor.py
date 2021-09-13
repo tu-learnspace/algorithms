@@ -15,10 +15,14 @@ IDEA:
 - đồ thị có trọng số => graph lưu thêm trọng số
 - giữa 2 đỉnh chỉ có 1 cạnh => đồ thị dạng cây
 - đường đi lớn nhất chắc chắn nối giữa 2 node lá trong cây => tìm đường nối 2 node lá trong cây
-=> đầu tiên duyệt dfs từ 1 tìm node lá bắt đầu (chắc chắn tìm đc node lá)
+=> đầu tiên duyệt dfs từ 1 tìm node lá bắt đầu (chắc chắn tìm đc node lá)*
 - sau đó từ node lá đó tiếp tục duyệt dfs qua các node lá khác => cập nhật đc max
 
-- bài này xài cách đệ quy bị TLE
+
+* khi chọn 1 đỉnh bất kỳ, đỉnh xa đỉnh đó nhất là
+    i) 1 node lá và
+    ii) node lá đó là 1 trong 2 node lá tạo nên đường kính
+* bài này xài cách đệ quy bị TLE
 """
 def dfs(src):
     global leaf, max_dist

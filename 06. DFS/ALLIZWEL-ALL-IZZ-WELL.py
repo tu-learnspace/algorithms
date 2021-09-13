@@ -48,7 +48,8 @@ def dfs(src, visited, maze, R, C, count):
         if r in range(R) and c in range(C) and maze[r][c] == end[count + 1] and not visited[r][c]:  # ô tiếp theo thỏa là chữ cái cần tìm tiếp theo
             visited[r][c] = True    # đang viếng thăm ô đó
             dfs([r, c], visited, maze, R, C, count + 1)
-            visited[r][c] = False   # tới đc dòng này là viếng nó rồi mà quay ra (vẫn chưa thỏa count = 9), nghĩa là đường cụt rồi, phải bỏ con đường đó (đánh dấu False các ô)
+            visited[r][c] = False   # tới đc dòng này là viếng nó rồi mà quay ra (vẫn chưa thỏa count = 9), nghĩa là đường cụt rồi, phải bỏ con đường đó (mark False)
+                                    # phải đặt trong này để khỏi bị index out of range
 
 
 if __name__ == '__main__':
