@@ -13,7 +13,6 @@ IDEA:
 - xài dfs duyệt toàn bộ cây
 - chạy qua từng nút rồi tính độ dài nhất (giống như kiểu cho từng quả bom nổ, xem bom nào nổ nhiều nhất) => reset visited cho từng node
 
-NOTE:
 - xài bfs bị time limit?
 """
 MAX = 10**5 + 5
