@@ -31,6 +31,7 @@ def BFS(s):
                 q.put(v)            # thêm vào queue các đỉnh kề khác (vòng while sau xét)
                 path[v] = u         # đánh dấu đỉnh trước V là U
 
+
 # tìm đường đi từ s->f dùng đề quy
 def printPathRecursion(s, f):
     if s == f:
@@ -41,6 +42,7 @@ def printPathRecursion(s, f):
         else:
             printPathRecursion(s, path[f])
             print(f, end=' ')
+
 
 # tìm đường đi từ s -> f ko dùng đề quy
 def printPath(s, f):
@@ -61,7 +63,6 @@ def printPath(s, f):
     # in ngược lại do đang đi ngược từ f -> s
     for i in range(len(b)-1,-1,-1):
         print(b[i],end=' ')
-
 
 
 if __name__ == '__main__':
