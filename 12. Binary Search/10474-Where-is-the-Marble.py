@@ -12,7 +12,7 @@ IDEA:
 def binarysearch(a, x):
     left = 0
     right = n - 1
-    while(left <= right):
+    while left <= right:
         mid = (left + right) // 2
         if a[mid] == x and (mid == left or a[mid - 1] < x):
             return mid
