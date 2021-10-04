@@ -1,4 +1,6 @@
-# codeforces
-My careless solution for Codeforces
+Learning Basic Algorithms
 
-Doing these stuffs makes me feel stupid ☺
+---
+
+1.
+
