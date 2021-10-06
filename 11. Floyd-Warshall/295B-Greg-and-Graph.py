@@ -13,26 +13,26 @@ IDEA:
 - vì khi đi ngc lại là chắc chắn có đường => ko cần check INF
 """
 
-def backward_floyd():
-    for k in range(n - 1, -1, -1):
-        for i in range(n):
-            for j in range(n):
-                if graph[i][j] < graph[i][deleted[k]] + graph[deleted[k]][j]:
-                    graph[i][j] = graph[i][deleted[k]] + graph[deleted[k]][j]
-
-    for i in range(n):
-        for j in range(n):
-            ans += graph[][]
-
-
 n = int(input())
-graph = [0] * (n + 1)
-for i in range(n):
-    graph[i] = list(map(int, input().split()))
+dist = [[0] * (n + 1)]  # bắt đầu từ 1
 
-deleted = list(map(int, input().split()))
+for i in range(1, n + 1):
+    dist.append([0] + list(map(int, input().split())))
 
-res = [0] * (n + 1)
+middleV = list(map(int, input().split()))
+res = [0] * n
 
-backward_floyd()
+for index in range(n - 1, -1, -1):
+    k = middleV[index]
+
+    for i in range(1, n + 1):
+        for j in range(1, n + 1):
+            dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
+
+    for u in middleV[index:]:
+        for v in middleV[index:]:
+            res[index] += dist[u][v]
+
+print(*res)
+
 
