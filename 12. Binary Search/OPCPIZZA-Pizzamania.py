@@ -29,7 +29,7 @@ for _ in range(tc):
     res = 0
     for i in range(n):
         friend = m - a[i]
-        res += bs(a, i, n -1, i, friend)
+        res += bs(a, i, n - 1, i, friend)
     print(res)
 
 

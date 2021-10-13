@@ -6,21 +6,26 @@ https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&
 - với mỗi truy vấn x, xác định vị trí số x đầu tiên trong dãy bi. nếu k có in ra x not found
 
 IDEA:
-- binary search first bth
+- binary search first bth, tìm phần tử >= đầu tiên
+- lưu ý vì nếu phần tử ko có trong mảng thì phải trả ra ko có (chứ ko phải trả ra vị trí đầu tiên > đã cài đặt mẫu)
+=> phải xét cả 3 TH của a[mid]: == x, > x, < x
 """
+
 
 def binarysearch(a, x):
     left = 0
     right = n - 1
+    pos = -1
     while left <= right:
         mid = (left + right) // 2
-        if a[mid] == x and (mid == left or a[mid - 1] < x):
-            return mid
-        if a[mid] >= x:         # ở đây phải = mà ko rơi vào vòng if trên nghĩa là phía trc vẫn còn
+        if a[mid] == x:
+            pos = mid
+            right = mid - 1
+        elif a[mid] > x:
             right = mid - 1
         else:
             left = mid + 1
-    return -1
+    return pos
 
 
 tc = 1
