@@ -1,3 +1,12 @@
+# Dijkstra tìm đường đi ngắn nhất từ 1 đỉnh tới các đỉnh còn lại trên đồ thị ko âm
+# Ý tưởng tham lam, duyệt theo đỉnh.
+# Với mỗi đỉnh kể đỉnh đang xét, nếu như đường đi tới đỉnh đó thông qua đỉnh kề đó tốt hơn thì cập nhật
+# Nhược điểm: vì quá tham lam nên sẽ có 1 số TH phải chạy nhiều lần mới đúng (vd bài 10246-Asterix-and-Obelix)
+
+# Độ phức tạp: O(V^2) - xét theo đỉnh
+#   - dùng heap: đpt O(ElogV)
+#   - dùng cây nhị phân tìm kiếm: O(ElogV)
+
 import heapq
 MAX = 100
 INF = int(1e9)  # dist ban đầu là vô cực

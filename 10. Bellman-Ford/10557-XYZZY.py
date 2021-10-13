@@ -9,13 +9,14 @@ https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&
 - tìm xem game đó có winnable hay hopeless
 
 IDEA:
+- ta ko cần lưu trọng số trên cạnh vì thật sự trọng số chỉ ở đỉnh cuối chứ k phải cạnh
 - cần tìm đường đi từ start tới end có tổng mana lớn nhất (để ko phải thua vì hết mana)
 => cần tìm chu trình dương (để tăng mana lên mức vô cực) => dùng bellman-ford
 - tuy nhiên có thể đi xong chu trình dương mà ko tới end đc => duyệt BFS/DFS tại đỉnh coi có đường đi ko
-- ta ko cần lưu trọng số trên cạnh vì thật sự trọng số chỉ ở đỉnh cuối chứ k phải cạnh
 """
 from queue import Queue
 INF = int(1e9)
+
 
 def bfs(s, e):
     visited = [False] * (n + 1)
@@ -33,7 +34,6 @@ def bfs(s, e):
                     q.put(target)
                 if target == e:
                     return True
-
     return False
 
 
@@ -51,9 +51,9 @@ def bellman(start, end):
     for edge in graph:
         source, target = edge
         if dist[source] > 0 and dist[source] + energy[target] > dist[target] and bfs(source, end):       # vẫn có thể dài hơn và có đường đi đến căn phòng cuối cùng
-            return 'winnable=='
+            return 'winnable'
 
-    # hết mana trc khi tới căn phòng cuối, vẫn phải check ở đây vì có TH vẫn win mà ko cần chu trình dương
+    # check nếu hết mana trc khi tới căn phòng cuối (vẫn phải check ở đây vì có TH vẫn win mà ko cần chu trình dương)
     if dist[end] <= 0:
         return 'hopeless'
     else:

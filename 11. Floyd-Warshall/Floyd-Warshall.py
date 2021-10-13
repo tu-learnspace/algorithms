@@ -1,3 +1,11 @@
+# So với việc tìm đường đi ngắn nhất từ 1 đỉnh tới các đỉnh còn lại, dùng Bellman-Ford (duyệt cạnh, đồ thị âm) và Dijkstra (duyệt đỉnh, đồ thị ko âm)
+# Thì Floyd-Warshall tìm đường đi ngắn nhất giữa TẤT CẢ các cặp đỉnh, đồ thị âm dương đề đc (đương nhiên có chu trình âm thì fail, vì chu trình âm làm gì đường đi ngắn nhất)
+# Dùng ý tưởng quy hoạch động, lưu tất cả kết quả có được => lưu dạng ma trận
+# Với mỗi cặp đỉnh u-v (2 vòng lặp), ta chèn vào 1 đỉnh trung gian K nào đó xem nó có tốt hơn ko (vòng lặp bên ngoài), nghĩa là từ u-k rồi k-v tốt hơn u-v
+# => tổng cộng 3 vòng lặp
+
+# Độ phức tạp: O(V^3)
+
 # lưu graph dạng ma trận kề. graph có thể sử dụng như dist luôn
 # ban đầu khởi tạo dist = graph. dist[i][j]: đường đi từ i -> j
 # path[u][v]: đỉnh liền trc v trong đường đi từ u tới v => cập nhật path[i][j] = path[k][j]
