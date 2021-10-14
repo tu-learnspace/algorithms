@@ -12,16 +12,19 @@ IDEA:
 - đề bài cho dữ kiện các biến => có thể hàm f(x) có 1 đặc trưng nào đó
 - ta đạo hàm f'(x) kết hợp với dữ kiện => f'(x) <= 0. f'(x) = 0 khi và chỉ khi x,p,r,q,s,t = 0, nghĩa là u = 0 => ko thể tìm x
 => f'(x) < 0
-=> f(x) là hàm nghịch biến trên tập xác định [0, 1]. Nghĩa là x0 > x1 thì f(x0) <= f(x1)
+=> f(x) là hàm nghịch biến trên tập xác định [0, 1]. Nghĩa là x0 > x1 thì f(x0) < f(x1)
 
-- kiểm tra vô nghiệm: x nằm ngoài [0, 1] thì kết luận vô nghiệm. Nghĩa là với bộ số p, q, r, s, t, u input => pt vô nghiệm nếu:
-    f(0) < 0
-    f(1) > 0
-- range là [0, 1] => chặt nhị phân để tìm kiếm
-- đề yêu cầu chính xác tới 4 chữ số thập phân (kết quả dạng: 0.0000x) => 10^-5 nhưng để phòng việc bị tràn số nên chọn chọn epsilon = 10^-6
+- pt có nghiệm tại f(x) = 0. Như vậy, pt vô nghiệm nếu: f(x) < 0 hoặc f(x) > 0. lại có f(x) nghịch biến
+- mà x chạy trong khoảng [0,1], nên ta có thể xét:
+    nếu f(1) > 0 thì ko thể có x là nghiệm đc. vd f(0.99) càng > hơn 0 nữa
+    nếu f(0) < 0 thì ko thể có x là nghiệm đc. vd f(0.01) càng < hơn 0 nữa
+    => PT vô nghiệm trong 2 TH f(1) > 0 và f(0) < 0
+
+- range là [0, 1], nghiệm có thể là số thực
+=> chặt nhị phân trên range để tìm kiếm
 """
 import math
-epsilon = 1e-6
+epsilon = 1e-9
 
 
 def calculate(p, q, r, s, t, u, x):
@@ -52,4 +55,3 @@ while True:
 
     except EOFError:
         break
-        
