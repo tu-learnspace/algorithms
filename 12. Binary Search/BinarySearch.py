@@ -1,11 +1,19 @@
 # binary search dùng để tìm phần tử trong 1 mảng đã sắp xếp
-# thực tế thì ko ứng dụng nhiều (vì chi phí sắp xếp), nếu tìm kiếm nhiều thì mới có lợi
-# người ta hay dùng để tìm phẩn tử xuất hiện đầu tiên, cuối cùng, cận trên, cận dưới v.v
 # ở đây xét mảng sắp xếp theo thứ tự tăng dần
 
-# khi nào left < right hay left <= right? tùy thuộc vào cận mình chọn, nếu <= tức là có lấy cận right, < thì ko lấy
+# Độ phức tạp: log(max-min/sai_số) = log(số_đoạn_chặt_nhị_phân)
+
+# thực tế thì ko ứng dụng nhiều (vì chi phí sắp xếp), nếu tìm kiếm nhiều thì mới có lợi. người ta hay dùng để tìm phẩn tử xuất hiện đầu tiên, cuối cùng, cận trên, cận dưới v.v
+
+# khi nào left < right hay left <= right?
+# => tùy thuộc vào cận mình chọn, nếu <= tức là có lấy cận right, < thì ko lấy
 # để thống nhất, các hàm đều gọi theo kiểu: tên_hàm(a, 0, n - 1, x) tức là khoảng [0, n-1]
-# tư duy theo kiểu: ptử tử này thỏa chưa. nếu thỏa thì tạm cập nhật pos, chưa thì tùy biến left, right theo kiểu giả sử tăng/giảm sao cho ráng ép thỏa, nếu k thỏa đc thì chốt pos
+# tư duy theo kiểu:
+#   + ptử tử này thỏa chưa
+#   + nếu thỏa thì tạm cập nhật pos,
+#   + chưa thì tùy biến left, right theo kiểu giả sử tăng/giảm sao cho ráng ép thỏa, nếu k thỏa đc thì chốt pos
+# thường thì sẽ thu gọn right = mid - 1 (kiếm min), tăng left = mid + 1 (kiếm max)
+
 
 def binarySearchRecursion(a, left, right, x):
     if left <= right:
