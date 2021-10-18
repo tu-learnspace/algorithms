@@ -37,8 +37,8 @@ def unionSet(u, v):
     elif ranks[up] < ranks[vp]:
         parent[up] = vp
     else:                               # 2 rank bằng nhau thì cho ai làm gốc cũng đc
-        parent[up] = vp
-        ranks[vp] += 1                  # tăng rank
+        parent[up] = vp                 # chọn vp là cha
+        ranks[vp] += 1                  # thì tăng rank cha lên 1 (1 đường nối từ thằng cha xuống thằng con, 2 vòng if trên ko tăng rank)
 
 
 if __name__ == '__main__':
