@@ -9,7 +9,8 @@
 class Node:
     def __init__(self):
         self.countWord = 0      # nếu số nguyên khác 0 nghĩa là node này là kết thúc 1 từ gồm nhiều chữ cái
-        self.child = dict()     # chứa dữ liệu, dùng để kết nối vs 1 node khác, (lưu mảng cũng đc nhưng dùng dict đơn giản hơn, đỡ phải ord rườm rà)
+        self.child = dict()     # chứa dữ liệu, kết nối vs 1 node khác (C#, Java lưu mảng với số phần tử có sẵn cũng đc, khi xét phải chuyển thành mã ascii
+                                #                                      Python dùng dict đơn giản hơn, đỡ phải chuyển thành mã ascii - chr(ord()) rườm rà)
 
 
 # thêm 1 từ
@@ -30,7 +31,7 @@ def findWord(root, s):
     for ch in s:
         if ch not in temp.child:        # chưa có nhánh con
             return False
-        temp = temp.child[ch]           # đi xuống nhánh con
+        temp = temp.child[ch]           # trượt xuống nhánh con
     return temp.countWord > 0           # rơi vào TH tìm thấy hoặc ko tìm thấy (ko đủ 1 từ)
 
 
@@ -68,7 +69,7 @@ def removeWord(root, s, level, len):
     return flag
 
 
-# in toàn bộ từ trong cây
+# in toàn bộ từ trong cây, ban đầu cho s =''
 def printWord(root, s):
     if isWord(root):            # nếu là 1 từ thì in ra (count > 0)
         print(s)
