@@ -8,6 +8,7 @@
 # => cải tiến union by size: thằng nào lớn hơn thì làm gốc
 # => by size là dựa vào kích thước dự đoán chiều cao cây, sao ta k lưu chiều cao cây luôn => union by rank
 
+# khi đếm thành phần liên thông, ta chỉ cần check nếu i == parent[i] thì đó là 1 thành phần liên thông (nút đại diện cao nhất mới có parent là chính nó)
 
 MAX = 20
 parent = []
