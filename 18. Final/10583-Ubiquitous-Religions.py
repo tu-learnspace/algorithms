@@ -1,8 +1,13 @@
 """
 https://onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=1524
 
+- cho các cặp i, j, w với người i & người j tin vào tôn giáo w
+- hãy tìm tổng số loại tôn giáo
+
+IDEA:
 - dùng DSU hợp mấy người có cùng tôn giáo
-- đếm số phần tử đại diện cao nhất (i == parent[i])
+=> bài toán đếm số thành phân liên thông
+=> đếm số phần tử đại diện cao nhất (i == parent[i])
 """
 
 def find(u):

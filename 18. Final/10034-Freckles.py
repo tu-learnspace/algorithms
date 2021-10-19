@@ -2,19 +2,28 @@
 https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&problem=975
 
 - cho các điểm
-- tìm các cạnh nối các điểm (có thể ko cần liền nhau) sao cho đi qua tất cả các điểm & tổng là nhỏ nhất
+- tìm tổng các cạnh sao cho các cạnh:
+    đi qua tất cả các điểm
+    tổng trên là nhỏ nhất
 
 IDEA:
-- có 2 điểm => danh sách các cạnh. tuy nhiên ko cần tính tổng tất cả các cạnh (chỉ cần đi qua điểm đó 1 lần là đc)
+- với mỗi 2 điểm => có danh sách các cạnh riêng biệt
+- cần tìm sao cho tổng các cạnh là nhỏ nhất
 => sort danh sách cạnh tăng dần
+
 - dùng DSU
-- mỗi 2 điểm đọc vào union nó lại:
-    union thành công thì + cạnh nối 2 điểm đó vào res (vì đã sort nên chắc chắn bé nhất)
+- xét mỗi cạnh ta đc 2 điểm riêng biệt:
+    + nếu 2 điểm ko thuộc cùng thành phần liên thông (tức là chưa có cạnh nào đi qua 2 điểm đó) => union nó lại thành 1 thành phần liên thông, rồi + độ dài cạnh vào res
+    + đã thuộc 1 thành phần liên thông thì bỏ qua
+(vì đã sort danh sách cạnh tăng dần theo độ dài => chắc chắn đc tổng là nhỏ nhất)
+
+- để tiện union thì ta chỉ cần định danh mỗi điểm theo stt (vd điểm thứ 1, điểm thứ 2, v.v)
 """
 import math
 
+
 class Edge:
-    def __init__(self, x, y, dist):
+    def __init__(self, x, y, dist):     # x, y là stt 2 điểm nối thành cạnh có độ dài dist
         self.x = x
         self.y = y
         self.dist = dist
