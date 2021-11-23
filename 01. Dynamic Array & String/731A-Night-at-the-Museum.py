@@ -18,7 +18,7 @@ if __name__ == '__main__':
     chars = [char for char in name]
 
     count = 0
-    pos = 97  # init at 'a'
+    pos = ord('a')  # init at 'a', pos = 97
 
     for char in chars:
         l1 = abs(ord(char) - pos)
