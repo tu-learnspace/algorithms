@@ -12,7 +12,7 @@ IDEA:
 
 - làm sao biết 1 cạnh thuộc đường đi ngắn nhất hay k?
 - giả sử ngắn nhất từ s -> d đi qua u-v
-=> nghĩa là xét ngắn nhất từ s -> u + ngắn nhất từ d -> u + u-v == ngắn nhất s -> d
+=> nghĩa là xét ngắn nhất từ s -> u + ngắn nhất từ d -> v + u-v == ngắn nhất s -> d
 => dist_s[u] + |(u, v)| + dist_d[v] == dist_s[d]
 => lần lượt xét các cặp u-v thỏa mãn thì xóa nó khỏi đồ thì
 

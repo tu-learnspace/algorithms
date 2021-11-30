@@ -5,6 +5,16 @@ https://www.spoj.com/problems/TRAFFICN/
 - danh sách k đường đi 2 chiều đc soạn ra
 - chọn 1 trong số k đường đi đó để giảm thiểu nhiều nhất chi phí đi giữa s và t
 
+IDEA:
+- ban đầu đồ thị là các con đường 1 chiều
+- xong rồi cho các con đường 2 chiều đc triển khai, hỏi độ dài đường đi ngắn nhất từ S -> T
+Cách làm bth: lần lượt gắn từng con đường 2 chiều vào rồi chạy xem cái nào ngắn nhất thì chọn => TLE
+=> Cải tiến:
+- Ta tìm đường đi ngắn nhất từ S tới mọi điểm & đường đi ngắn nhất từ T tới mọi điểm
+=> bằng cách Dijkstra 2 lần theo 2 hướng => lúc input ta phải input và 2 đồ thị foreward & backward
+- Vd có con đường 2 chiề u - v => u-v sẽ là con đường đc chọn nếu:
+    + đường đi ngắn nhất từ S đến u + u-v + đường đi ngắn nhất từ T đến v là min
+    + hoặc ngc lại (vì là 2 chiều): S đến v &  T đến u
 
 """
 import heapq
