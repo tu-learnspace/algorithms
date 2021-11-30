@@ -56,6 +56,3 @@ if __name__ == '__main__':
                 else:
                     print(-1, end=' ')
         print('\n', end='')
-
-
-
