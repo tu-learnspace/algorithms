@@ -1,7 +1,7 @@
-# https://leetcode.com/problems/contains-duplicate
 """
-Check mảng có chứa phần tử lặp lại không
+https://leetcode.com/problems/contains-duplicate
 
+Check mảng có chứa phần tử lặp lại không
 
 - Dùng Set (DS k có duplicate element)
 """

@@ -12,7 +12,7 @@ def merge_sort(arr):
     merge_sort(right_arr)
 
     # merge:
-    # rule: we want to compare <left-most element vs left-most element>
+    # rule: we want to compare <left-most element> vs <left-most element>
     # -> use 2 pointers to keep track
     i = 0  # left_arr idx
     j = 0  # right_arr idx

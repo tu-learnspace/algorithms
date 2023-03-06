@@ -1,12 +1,18 @@
 """
 https://leetcode.com/problems/maximum-subarray
 
-Cho array, tìm contiguous sub array có sum lớn nhất
+Cho array, tìm value của contiguous sub array lớn nhất
 
 IDEA:
 Use Kadane algorithm:
 - Với mỗi element, tại đó ta đặt câu hỏi max sub là bao nhiêu
-- cm đc max sub tại X là X hoặc X + prev max sub)
+- cm đc max sub tại X là X hoặc X + prev max sub
+
+-> Với cm trên, ta chỉ cần duyệt qua mọi phần tử rồi tìm value max sub tại đó
+để tính đc value max sub tại đó thì phải bik value max sub ở vị trí trước
+    -> duyêt xuôi từ trái sang phải
+    -> vs max sub tại 0 là arr[0]
+
 
 [ ----- M X --- ]
 vd tại X:
