@@ -27,7 +27,7 @@ def merge(nums1, m, nums2, n):
     """
     c2 nếu ko xài sort
     vì nums1 nums2 đã đc sort và nums1 chắc chắn là array lớn
-    -> dùng 3 con trỏ để lắp vô từ k
+    -> dùng 2 con trỏ để so sánh từng phần tử 2 mảng rồi bê vô last pos của arr lớn
     
     [1, 2, 6, 0, 0, 0]
            m        k

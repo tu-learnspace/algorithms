@@ -1,8 +1,11 @@
 def merge_sort(arr):
-    # condition for recursion (when only 1 left)
+    # stop condition for recursion: when only 1 left
     if len(arr) <= 1:
         return arr
 
+    """
+    split step
+    """
     # divide into 2 sub-array
     left_arr = arr[:len(arr)//2]
     right_arr = arr[len(arr)//2:]
@@ -11,9 +14,11 @@ def merge_sort(arr):
     merge_sort(left_arr)
     merge_sort(right_arr)
 
-    # merge:
-    # rule: we want to compare <left-most element> vs <left-most element>
-    # -> use 2 pointers to keep track
+    """
+    merge step:
+    rule: compare <left-most element> vs <left-most element>
+        -> use 2 pointers to keep track
+    """
     i = 0  # left_arr idx
     j = 0  # right_arr idx
     k = 0  # merge_arr idx
@@ -26,8 +31,7 @@ def merge_sort(arr):
             j += 1
         k += 1
 
-    # left over last element
-    # TODO: can I use if instead of while?
+    # left over last element. TODO: can I use "if" instead of "while"?
     while i < len(left_arr):
         arr[k] = left_arr[i]
         i += 1
