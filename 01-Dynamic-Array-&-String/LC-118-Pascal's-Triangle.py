@@ -65,8 +65,8 @@ def generate(numRows):
     """
     res = [[1]]
     for i in range(1, numRows):
-        # [1, 0] + [0, 1] for e.g.
-        res.append(list(map(lambda x, y: x + y, res[-1] + [0], [0] + res[-1])))  # res[-1] means the last element, we want the latest sum
+        # res[-1] means the last element (sum), [1, 0] + [0, 1] for e.g.
+        res.append(list(map(lambda x, y: x + y, res[-1] + [0], [0] + res[-1])))
     return res[:numRows]  # TODO: return res? works too
 
 
