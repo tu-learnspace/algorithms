@@ -46,7 +46,7 @@ def matrixReshape(mat, r, c):
     """
     rows = len(mat)
     cols = len(mat[0])
-    if rows*cols != r*c:
+    if rows * cols != r * c:
         return mat
     res = [[0 for _ in range(c)] for _ in range(r)]
 
