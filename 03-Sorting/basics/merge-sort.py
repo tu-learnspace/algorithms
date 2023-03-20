@@ -1,3 +1,13 @@
+"""
+MERGE SORT
+
+Time complexity: N LOG N
+Divide & conquer:
+- divide array in halves
+- conquer: repeats itself recursively until all elements become single array elements.
+Stable sort (phần tử = nhau giữ nguyên vị trí sau khi sort)
+External sort (!= internal sort, input has to be stored in hard drive)
+"""
 def merge_sort(arr):
     # stop condition for recursion: when only 1 left
     if len(arr) <= 1:
