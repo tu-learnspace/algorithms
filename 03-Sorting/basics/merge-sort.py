@@ -14,20 +14,20 @@ def merge_sort(arr):
         return arr
 
     """
-    split step
+    1. split step:
+    divide into 2 sub-array
     """
-    # divide into 2 sub-array
     left_arr = arr[:len(arr)//2]
     right_arr = arr[len(arr)//2:]
 
-    # recursion on splitting 2 array
+    # 2. recursion on 2 splited arrays
     merge_sort(left_arr)
     merge_sort(right_arr)
 
     """
-    merge step:
+    3. merge step:
     rule: compare <left-most element> vs <left-most element>
-        -> use 2 pointers to keep track
+    -> use 2 pointers to keep track
     """
     i = 0  # left_arr idx
     j = 0  # right_arr idx
@@ -41,7 +41,10 @@ def merge_sort(arr):
             j += 1
         k += 1
 
-    # left over last element. TODO: can I use "if" instead of "while"?
+    """
+    4. handle the rest
+    """
+    # left over last element. TODO: can I use "if" instead of "while"? -> NO
     while i < len(left_arr):
         arr[k] = left_arr[i]
         i += 1
